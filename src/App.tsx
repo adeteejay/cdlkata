@@ -20,23 +20,20 @@ function App() {
   }
 
 
-
   const addToBasket = (item: StoreItem): void => {
-    console.log('setBasketItems')
     setBasketItems(prevItems => {
       const currentCount = (prevItems[item.item_name]?.count || 0) + 1;
       return {
         ...prevItems,
         [item.item_name]: {
           count: currentCount,
-          totalPrice: item.price * currentCount
+          totalPrice: calculateTotalForItem(item, currentCount)
         }
       };
     });
   };
 
   const removeFromBasket = (item: StoreItem): void => {
-    console.log('remove from baseket')
     setBasketItems(prevItems => {
       if (!prevItems[item.item_name] || prevItems[item.item_name].count <= 0) return prevItems;
 
@@ -51,13 +48,26 @@ function App() {
         ...prevItems,
         [item.item_name]: {
           count: currentCount,
-          totalPrice: item.price * currentCount
+          totalPrice: calculateTotalForItem(item, currentCount)
         }
       };
     });
   }
 
+  const calculateTotalForItem = (item: StoreItem, count: number): number => {
+    if (!item.specials) {
+      return count * item.price;
+    }
+    const specialDeals = Math.floor(count / item.specials.count);
+    const remainingItems = count % item.specials.count;
+    return (specialDeals * item.specials.price) + (remainingItems * item.price);
+  };
 
+
+  const calculateTotalForAll = (): number => {
+    return Object.values(basketItems).reduce((total, item) =>
+      total + item.totalPrice, 0);
+  };
   return (
     <>
       <h1>Store Checout System CDL</h1>
@@ -108,7 +118,7 @@ function App() {
             )}
           </div>
           <div className="total">
-            <h3>Total: {formatPrice(550)}</h3>
+            <h3>Total: {formatPrice(calculateTotalForAll())}</h3>
           </div>
         </div>
       </div>
