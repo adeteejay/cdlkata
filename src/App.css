@@ -1,42 +1,81 @@
+body{
+  background: #f8f9fa;
+}
 #root {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.flex-row{
+  display: flex;
+  align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.store-container {
+  margin: 20px auto;
+  width: 100%;
+  display: flex;
+  gap: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.items-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.card {
-  padding: 2em;
+.item-card {
+  background: #FF9F0F;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
 }
 
-.read-the-docs {
-  color: #888;
+.item-card:hover {
+  transform: translateY(-2px);
+}
+
+.item-card h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.item-card-image {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+}
+.item-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+.button{
+  height: 40px;
+  align-self: flex-end;
+}
+
+
+
+
+
+.basket-container {
+  background: white;
+  border-radius: 8px;
+  width: 230px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content;
 }
