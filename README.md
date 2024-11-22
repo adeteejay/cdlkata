@@ -2,6 +2,8 @@
 
 This is a solution for the **JavaScript Kata** challenge. It simulates a store checkout system where items can be added to a basket, and the total price is calculated, including special offers and discounts.
 
+Total Time Spent On Project + Doc: : **Approx 3Hrs**
+
 ## Purpose
 
 The system is designed to:
