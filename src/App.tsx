@@ -82,9 +82,9 @@ function App() {
       <h1>Store Checout System CDL</h1>
       <div className="store-container">
         <div className="items-container">
-          {STORE_ITEMS.map((item) => (
+          {STORE_ITEMS.map((item, index: number) => (
             <div key={item.id} className="item-card">
-              <div className="item-card-image">{item.item_name}</div>
+              <div className="item-card-image"><img src={'https://prd.place/10'+index} /></div>
               <div className="item-card-content">
                 <h3>Item {item.item_name}</h3>
                 <div className="price-container">

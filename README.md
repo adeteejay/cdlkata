@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# Store Checkout System - JavaScript Kata
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution for the **JavaScript Kata** challenge. It simulates a store checkout system where items can be added to a basket, and the total price is calculated, including special offers and discounts.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The system is designed to:
 
-## Expanding the ESLint configuration
+- **Handle pricing schemes** like regular prices and special offers (e.g., "3 for 130").
+- **Allow multiple items** to be added to a basket, where prices are recalculated as items are added or removed.
+- **Provide a simple interface** to view the basket contents and total price.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Key Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Add and remove items**: Users can add or remove items from the basket.
+- **Special pricing**: Items with special offers (like "3 for 130") are handled correctly.
+- **Basket total**: The total price is dynamically calculated, including both regular prices and special pricing.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## How It Works
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. **Item Prices**: Each item has a regular price and may have a special pricing offer. For example, item 'A' costs 50p each, but if you buy 3 of them, the price is 130p.
+2. **Add to Basket**: When an item is added to the basket, the system checks if it has a special offer. If so, it calculates the price using that offer; otherwise, it uses the regular price.
+3. **Remove from Basket**: Items can be removed from the basket, and the total price will update accordingly.
+4. **Total Calculation**: The app calculates the total price for all items in the basket, considering any special offers.
+5. **Discount Calculation**: The app also calculates the total ammount saved for all items in the basket.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## How to Run the Project
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+To run the project locally:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/store-checkout.git
+   ```
+
+2. **Install dependencies**:
+   Navigate to the project folder and install the necessary packages:
+   ```bash
+   npm install
+   ```
+
+3. **Start the application**:
+   Run the following command to start the development server:
+   ```bash
+   npm start
+   ```
+
+    The application will be available at `http://localhost:3000` in your browser.
+
+## Technologies Used
+
+- **React**: For building the user interface, allowing the user to interact with the app.
+- **TypeScript**: To add static types, ensuring better code quality and reducing runtime errors.
+- **CSS**: For basic styling of the interface.
+- **ProductPlaceholder.com**: For Product placeholder images
+
+---
+
+While the project doesn't directly use AWS in this particular implementation, but given that this is an **AWS-first company**, the solution can easily be extended to integrate with AWS services. For example:
+
+- **AWS Lambda**: For handling checkout calculations or item price retrieval in a serverless environment.
+- **DynamoDB**: To store item prices and special offers in a scalable, NoSQL database.
+- **S3**: To serve static files efficiently.
+
