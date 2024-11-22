@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { BasketItems, StoreItem } from './types'
 
-const STORE_ITEMS: any[] = [
+const STORE_ITEMS: StoreItem[] = [
   { id: 1, item_name: 'A', price: 50, specials: { count: 3, price: 130 } },
   { id: 2, item_name: 'B', price: 30, specials: { count: 2, price: 45 } },
   { id: 3, item_name: 'C', price: 20 },
