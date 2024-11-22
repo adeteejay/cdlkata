@@ -1,3 +1,53 @@
+/* RESET */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  color:rgba(0, 0, 0, 0.75)
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
 body{
   background: #f8f9fa;
 }
@@ -28,12 +78,12 @@ body{
 }
 
 .item-card {
-  background: #FF9F0F;
+  background: #FFF;
   border-radius: 8px;
   padding: 20px;
   display: flex;
-  width: 100%;
-  gap: 10px;
+  max-width: 100%;
+  gap: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
 }
@@ -54,14 +104,34 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: azure;
+  background-color: rgb(240, 255, 255);
+  font-size: 3rem;
+  color:rgba(16, 37, 37, 0.5))
 }
 .item-card-content {
   display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   gap: 10px;
 
 }
+.price-container{
+  text-align: left;
+}
+
+.item-price{
+  font-size: 1.55rem;
+  font-weight: bold;
+}
+
+.special-offer{
+  font-size: 1.1rem;
+  font-style: italic;
+  color:rgba(0, 0, 0, 0.5)
+}
+
 .button{
   height: 40px;
   align-self: flex-end;
@@ -75,7 +145,34 @@ body{
   background: white;
   border-radius: 8px;
   width: 230px;
-  padding: 5px 10px;
+  padding: 20px 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: fit-content;
+}
+.quantity-controls {
+  /* background-color: #3FCFAF; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.basket-item-info span{
+  font-size: 1.25rem;
+}
+.basket-item span{
+  font-size: 1.05rem;
+}
+.basket-item{
+  margin: 20px 0 0 0;
+  padding: 10px 0;
+  /* background-color: #f8f9fa; */
+}
+.basket-items, .empty{
+  padding: 10px 0;
+}
+.total {
+  margin: 20px 0 0 0;
+}
+.bold{
+  font-weight: 700;
 }

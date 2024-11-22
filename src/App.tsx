@@ -68,6 +68,15 @@ function App() {
     return Object.values(basketItems).reduce((total, item) =>
       total + item.totalPrice, 0);
   };
+  
+  const calculateTotalDiscount = (): number => {
+    return Object.entries(basketItems).reduce((totalSavings, [itemName, details]) => {
+      const item = STORE_ITEMS.find(i => i.item_name === itemName)!
+      const fullPrice = details.count * item.price 
+      return totalSavings + (fullPrice - details.totalPrice) 
+    }, 0)
+  }
+
   return (
     <>
       <h1>Store Checout System CDL</h1>
@@ -78,11 +87,11 @@ function App() {
               <div className="item-card-image">{item.item_name}</div>
               <div className="item-card-content">
                 <h3>Item {item.item_name}</h3>
-                <div className="">
+                <div className="price-container">
                   <p className="item-price">{formatPrice(item.price)}</p>
                   {item.specials && (
                     <p className="special-offer">
-                      Special: {item.specials.count} for {formatPrice(item.specials.price)}
+                      <span className="bold">Offer:</span> {item.specials.count} for {formatPrice(item.specials.price)}
                     </p>
                   )}
                 </div>
@@ -119,6 +128,7 @@ function App() {
           </div>
           <div className="total">
             <h3>Total: {formatPrice(calculateTotalForAll())}</h3>
+            <p>You saved: {formatPrice(calculateTotalDiscount())}</p>
           </div>
         </div>
       </div>
